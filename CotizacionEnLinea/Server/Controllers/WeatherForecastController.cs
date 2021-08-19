@@ -1,4 +1,4 @@
-﻿using CotizacionEnLinea.Shared;
+﻿using CotizacionEnLinea.Shared.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

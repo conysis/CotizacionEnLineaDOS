@@ -1,4 +1,4 @@
-﻿using CotizacionEnLinea.Server.Models;
+﻿using CotizacionEnLinea.Shared.Models;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -18,11 +18,8 @@ namespace CotizacionEnLinea.Server.Data
         }
         public DbSet<Cotizacion> Cotizaciones { get; set; }
         public DbSet<Licitacion> Licitaciones { get; set; }
-
         public DbSet<LinsxLicit> LinsxLicits { get; set; }
-
         public DbSet<LinsxCotiz> LinsxCotizs { get; set; }
-
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }

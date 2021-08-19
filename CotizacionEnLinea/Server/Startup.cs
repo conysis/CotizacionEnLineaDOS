@@ -1,5 +1,5 @@
 using CotizacionEnLinea.Server.Data;
-using CotizacionEnLinea.Server.Models;
+using CotizacionEnLinea.Shared.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

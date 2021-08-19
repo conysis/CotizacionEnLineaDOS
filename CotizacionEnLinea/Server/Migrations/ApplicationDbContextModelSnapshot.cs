@@ -16,10 +16,10 @@ namespace CotizacionEnLinea.Server.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.8")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.ApplicationUser", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -108,7 +108,7 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.Cotizacion", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.Cotizacion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,7 +133,7 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.ToTable("Cotizacion");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.Licitacion", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.Licitacion", b =>
                 {
                     b.Property<int>("IdLicitacion")
                         .ValueGeneratedOnAdd()
@@ -155,7 +155,7 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.ToTable("Licitacion");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.LinsxCotiz", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.LinsxCotiz", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,7 +189,7 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.ToTable("LinsxCotiz");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.LinsxLicit", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.LinsxLicit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -457,15 +457,15 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.Cotizacion", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.Cotizacion", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.Licitacion", "Licitacion")
+                    b.HasOne("CotizacionEnLinea.Shared.Models.Licitacion", "Licitacion")
                         .WithMany()
                         .HasForeignKey("IdLicitacion")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CotizacionEnLinea.Server.Models.ApplicationUser", "OwnerID")
+                    b.HasOne("CotizacionEnLinea.Shared.Models.ApplicationUser", "OwnerID")
                         .WithMany("Cotizaciones")
                         .HasForeignKey("UserId");
 
@@ -474,13 +474,13 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.Navigation("OwnerID");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.LinsxCotiz", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.LinsxCotiz", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.Cotizacion", "Cotizacion")
+                    b.HasOne("CotizacionEnLinea.Shared.Models.Cotizacion", "Cotizacion")
                         .WithMany("LineasCotizacion")
                         .HasForeignKey("CotizacionId");
 
-                    b.HasOne("CotizacionEnLinea.Server.Models.LinsxLicit", "LineaLicitacion")
+                    b.HasOne("CotizacionEnLinea.Shared.Models.LinsxLicit", "LineaLicitacion")
                         .WithMany("LinsxCotizs")
                         .HasForeignKey("LineaLicitacionId");
 
@@ -489,9 +489,9 @@ namespace CotizacionEnLinea.Server.Migrations
                     b.Navigation("LineaLicitacion");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.LinsxLicit", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.LinsxLicit", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.Licitacion", "Licitacion")
+                    b.HasOne("CotizacionEnLinea.Shared.Models.Licitacion", "Licitacion")
                         .WithMany("LineasLicitacion")
                         .HasForeignKey("IdLicitacion")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -511,7 +511,7 @@ namespace CotizacionEnLinea.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.ApplicationUser", null)
+                    b.HasOne("CotizacionEnLinea.Shared.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -520,7 +520,7 @@ namespace CotizacionEnLinea.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.ApplicationUser", null)
+                    b.HasOne("CotizacionEnLinea.Shared.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -535,7 +535,7 @@ namespace CotizacionEnLinea.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CotizacionEnLinea.Server.Models.ApplicationUser", null)
+                    b.HasOne("CotizacionEnLinea.Shared.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -544,29 +544,29 @@ namespace CotizacionEnLinea.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("CotizacionEnLinea.Server.Models.ApplicationUser", null)
+                    b.HasOne("CotizacionEnLinea.Shared.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.ApplicationUser", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Cotizaciones");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.Cotizacion", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.Cotizacion", b =>
                 {
                     b.Navigation("LineasCotizacion");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.Licitacion", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.Licitacion", b =>
                 {
                     b.Navigation("LineasLicitacion");
                 });
 
-            modelBuilder.Entity("CotizacionEnLinea.Server.Models.LinsxLicit", b =>
+            modelBuilder.Entity("CotizacionEnLinea.Shared.Models.LinsxLicit", b =>
                 {
                     b.Navigation("LinsxCotizs");
                 });

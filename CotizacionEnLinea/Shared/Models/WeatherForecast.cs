@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CotizacionEnLinea.Shared
+namespace CotizacionEnLinea.Shared.Models
 {
     public class WeatherForecast
     {

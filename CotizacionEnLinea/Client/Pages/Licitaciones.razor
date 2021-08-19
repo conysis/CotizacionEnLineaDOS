@@ -1,15 +1,15 @@
 ﻿@page "/licitaciones"
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@using CotizacionEnLinea.Shared
+@using CotizacionEnLinea.Shared.Models
 @attribute [Authorize]
 @inject HttpClient Http
 
-<h1>Weather forecast</h1>
+<h1>Licitaciones</h1>
 
-<p>This component obtiene las Licitaciones desde el servidor.</p>
+<p>Este obtiene las Licitaciones desde el servidor.</p>
 
-@if (forecasts == null)
+@if (licitaciones == null)
 {
     <p><em>Cargando...</em></p>
 }
@@ -18,20 +18,20 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Expediente</th>
+                <th>Creacion</th>
+                <th>Apertura</th>
+                <th>Comandos</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var licitacion in licitaciones)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@licitacion.Expediente</td>
+                    <td>@licitacion.FecCreacion.ToShortDateString()</td>
+                    <td>@licitacion.FecApertura.ToShortDateString()</td>
+                    <td><a href="">Detalle</a></td>
                 </tr>
             }
         </tbody>
@@ -39,13 +39,13 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private Licitacion[] licitaciones;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+            licitaciones = await Http.GetFromJsonAsync<Licitacion[]>("Licitacion");
         }
         catch (AccessTokenNotAvailableException exception)
         {

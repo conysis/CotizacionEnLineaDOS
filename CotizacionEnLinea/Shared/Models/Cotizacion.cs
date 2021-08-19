@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CotizacionEnLinea.Server.Models
+namespace CotizacionEnLinea.Shared.Models
 {
     [Table("Cotizacion")]
     public class Cotizacion
